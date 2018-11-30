@@ -6,10 +6,9 @@ tic; sinfun1(10000); toc;
 f = @() sinfun1(10000);
 s1 = timeit(f);
 
-% this measurement will not be accurate 
-% beacause it can be disturbed by the enviroment
+% this measurement will be  
 
-% timeit can be used to obtain reliable, repeatable time measurements
+
 M = 500 : 500 : 20000;
 for k = 1:numel(M)
     f = @() sinfun1(M(k));
