@@ -13,6 +13,10 @@ g = mat2gray(f);
 
 % I implement the same function as mat2gray in simulate_mat2gray.
 simulate_g = simulate_mat2gray(f);
+% simulate_g
+%      0    0.1250    0.2500
+% 0.3750    0.5000    0.6250
+% 0.7500    0.8750    1.0000
 
 % im2uint8 can't revert g to f.
 s = im2uint8(g);
