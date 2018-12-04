@@ -27,6 +27,29 @@ if strcmp(method, 'log')
     return;
 end
 
+% If f is floating point, check to see if it is in the range [0 1].
+% If it is not, force it to be using function mat2gray.
+if isfloat(f) && (max(f(:)) > 1 || min(f(:)) < 0)
+    f = mat2gray(f);
+end
+
+[f, revertclass] = tofloat(f); % Store class of f for use later.
+
+% Perform the intensity transformation specified.
+switch method
+    case 'neg'
+        g = imcomplement(f);
+        
+    case 'stretch'
+        g = stretchTransform(f, varargin{:});
+        
+    otherwise
+        error('Unkown enhancement method.');
+end
+
+% Convert to the class of the input image.
+g = revertclass(g);
+
 %------------------------------------------------------------------%
 function g = logTransform(f, varargin)
 [f, revertclass] = tofloat(f);
