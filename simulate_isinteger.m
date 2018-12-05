@@ -5,4 +5,7 @@ function I = simulate_isinteger(A)
 % (i .e., . . .  -2 -1 0 1 2 . . .) in A, and 0s (FALSE) elsewhere.
 % A must be a numeric array.
 
+if ~isnumeric(A)
+    error('A should be numeric.');
+end
 I = ( (A - floor(A)) == 0 ) &  (imag(A) == 0);
