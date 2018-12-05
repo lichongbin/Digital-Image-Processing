@@ -1,3 +1,3 @@
-h = imcircle(10, 33, 57);
+h = imcircle(100, 500, 600);
 f = im2uint8(h);
 imshow(f);
