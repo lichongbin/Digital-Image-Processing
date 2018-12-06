@@ -72,3 +72,17 @@ end
 
 g = C * (log(1 + f));
 g = revertclass(g);
+
+%------------------------------------------------------------------%
+function g = stretchTransform(f, varargin)
+if isempty(varargin)
+    % Use defaults.
+    m = mean2(f);
+    E = 4.0;
+elseif length(varargin) == 2
+    m = varargin{1};
+    E = varargin{2};
+else
+    error('Incorrect number of inputs for the stretch method.');
+end
+g = 1./(1 + (m./f).^E);

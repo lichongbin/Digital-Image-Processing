@@ -1,4 +1,4 @@
-function [out, revertclass] = tofloat(in£©
+function [out, revertclass] = tofloat(in)
 %TOFLOAT Convert image to floating point
 % [OUT, REVERTCLASS] = TOFLOAT(IN) converts the input image IN to
 % floating-point. If IN is a double or single image, then OUT 
@@ -16,7 +16,7 @@ table = {
     'single',  identity, identity
     };
 
-classindex = find(class(in), table{:,1});
+classindex = find(strcmp(class(in), table(:,1)));
 
 if isempty(classindex)
     error('Unsupported input image class.');
